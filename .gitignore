@@ -1,0 +1,7 @@
+/.gradle
+/.idea
+/api-web/build
+/spy.log
+/api-web/*.log
+/addon-generator/build
+/api-web/out

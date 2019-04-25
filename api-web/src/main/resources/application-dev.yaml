@@ -1,0 +1,16 @@
+debug: false
+# 日志
+logging:
+  pattern:
+    level: debug
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:p6spy:mysql://192.168.10.166:3306/vcloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: ENC(9VSppGu84t6XdB3Tb6Ep2A==)
+    password: ENC(n8Y4oU0oKmpu4FwhLYif3g==)
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+  devtools:
+    livereload:
+      enabled: true
