@@ -33,7 +33,7 @@ subprojects {
      repositories {
         mavenLocal()
         jcenter()
-        maven("http://192.168.10.166:10081/artifactory/pub")
+        mavenCentral()
     }
 
     dependencies {
