@@ -2,7 +2,7 @@ package com.template.web.demo.ctrl;
 
 import com.template.web.demo.entity.DemoEntity;
 import com.template.web.demo.service.DemoService;
-import io.nerv.core.mvc.ctrl.BaseCtrl;
+import io.nerv.core.mvc.ctrl.mybatis.StdBaseCtrl;
 import io.nerv.core.mvc.util.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(description = "CRUD示例",tags = "示例")
 @RestController
 @RequestMapping("/demo")
-public class DemoCtrl extends BaseCtrl<DemoService, DemoEntity> {
+public class DemoCtrl extends StdBaseCtrl<DemoService, DemoEntity> {
 
     @PostMapping("/aes")
     @ApiOperation(value = "AES加密",response = Response.class)

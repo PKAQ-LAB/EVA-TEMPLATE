@@ -5,14 +5,14 @@ import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import com.template.web.demo.entity.DemoEntity;
 import com.template.web.demo.mapper.DemoMapper;
-import io.nerv.core.mvc.service.BaseService;
+import io.nerv.core.mvc.service.mybatis.StdBaseService;
 import org.springframework.stereotype.Service;
 
 /**
  * CRUD示例
  */
 @Service
-public class DemoService extends BaseService<DemoMapper, DemoEntity> {
+public class DemoService extends StdBaseService<DemoMapper, DemoEntity> {
 
     public String aes(String demoText) {
         // 密钥
