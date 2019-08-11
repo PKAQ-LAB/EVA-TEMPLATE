@@ -6,20 +6,35 @@ spring:
     baseline-on-migrate: true
     locations: classpath:/db/migration
     check-location: false
+    baseline-version: 0
+  # 编码
+  http:
+    encoding:
+      charset: UTF-8
+  servlet:
+  # 文件上传配置
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  # 国际化配置
+  messages:
+    basename: i18n/i18n
 # mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: io.nerv.*.**.entity,com.template.*.**.entity
+  typeAliasesPackage: io.nerv.*.**.entity
   global-config:
-# 刷新mapper 调试神器
+#      刷新mapper 调试神器
     refresh: true
     db-config:
-      id-type: ID_WORKER_STR
-# 字段策略
-      field-strategy: not_empty
-# 驼峰下划线转换
+      id-type: uuid
+#      字段策略
+#      驼峰下划线转换
       table-underline: true
+      logic-delete-value: '0000' # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: '0001' # 逻辑未删除值(默认为 0)
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
@@ -30,7 +45,8 @@ jwt:
   token-head: Bearer
   sign: PKAQ
   secert: aHR0cDovL3BrYXEub3Jn
-  ttl: 3600000
+  ttl: 2592000000
+  threshold: 86400000
 # 配置加密
 jasypt:
   encryptor:
@@ -38,12 +54,18 @@ jasypt:
 # server配置
 server:
   servlet:
-    context-path: /vein
+    context-path: /api
   port: 9009
   tomcat:
     uri-encoding: utf-8
 # 业务日志
 bizlog:
-  enabled: false
-  impl: io.nerv.core.bizlog.supporter.mybatis.MybatisSupporter
-  basePackage:  com.xilai
+  enabled: true
+  impl: MybatisSupporter
+# 图片上传
+upload:
+  tempPath: E://temp/11
+  storagePath: E://temp/22
+  allowSuffixName: jpg,png
+security:
+  permit: /auth/login, /auth/logout
