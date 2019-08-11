@@ -1,7 +1,6 @@
 package com.template;
 
-import com.alibaba.fastjson.JSON;
-import io.nerv.web.sys.dict.helper.DictHelper;
+import io.nerv.web.sys.dict.cache.DictHelperProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.connector.Connector;
 import org.mybatis.spring.annotation.MapperScan;
@@ -31,13 +30,12 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication(scanBasePackages ={"com.template.*","io.nerv.*"} )
 public class WebBooter implements CommandLineRunner {
     @Autowired
-    private DictHelper dictHelper;
+    private DictHelperProvider dictHelperProvider;
 
     @Override
     public void run(String... args) {
         log.info(" ########### ##### ### # 字典初始化开始 # ### ##### ########### ");
-        dictHelper.init();
-        System.out.println(JSON.toJSONString(dictHelper.getDictMap()));
+        dictHelperProvider.init();
         log.info(" ########### ##### ### # 字典初始化结束 # ### ##### ########### ");
         System.out.println("  --- --- --- [ web started ] --- --- ---  ");
     }
