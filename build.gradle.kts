@@ -1,10 +1,10 @@
 plugins {
     pmd
     `java-library`
-    id("name.remal.check-dependency-updates") version "1.0.152"
+    id("name.remal.check-dependency-updates") version "1.0.158"
 }
 val eva = "2.0.3.beta"
-val lombok = "1.18.6"
+val lombok = "1.18.10"
 
 // libs
 val lib = mapOf(
