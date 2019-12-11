@@ -3,7 +3,7 @@ plugins {
     `java-library`
     id("name.remal.check-dependency-updates") version "1.0.152"
 }
-val eva = "1.5.0"
+val eva = "2.0.3.beta"
 val lombok = "1.18.6"
 
 // libs

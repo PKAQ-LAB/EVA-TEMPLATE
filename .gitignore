@@ -5,3 +5,4 @@
 /api-web/*.log
 /addon-generator/build
 /api-web/out
+/build
