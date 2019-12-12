@@ -1,4 +1,4 @@
-package com.template.config;
+package tech.xilai.config;
 
 import com.google.common.base.Predicate;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

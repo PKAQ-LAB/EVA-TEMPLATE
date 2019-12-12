@@ -1,4 +1,4 @@
-package io.nerv;
+package tech.xilai;
 
 import io.nerv.server.undertow.GracefulShutdownUndertowWrapper;
 import io.nerv.web.sys.dict.cache.DictHelperProvider;
@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableCaching
 @EnableJpaAuditing
 @SpringBootApplication
-@ComponentScan(basePackages = {"io.nerv.*"})
+@ComponentScan(basePackages = {"io.nerv.*","tech.xilai.*"})
 public class WebBooter implements CommandLineRunner {
 
     @Autowired
@@ -37,7 +37,6 @@ public class WebBooter implements CommandLineRunner {
         this.dictHelperProvider.init();
         log.info(" ---- 字典初始化 结束 ---- ");
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(WebBooter.class, args);

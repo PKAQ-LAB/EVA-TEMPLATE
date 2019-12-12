@@ -3,7 +3,7 @@ plugins {
     `java-library`
     id("name.remal.check-dependency-updates") version "1.0.158"
 }
-val eva = "2.0.3.beta"
+val eva = "2.0.4.beta"
 val lombok = "1.18.10"
 
 // libs
@@ -19,7 +19,7 @@ val lib = mapOf(
 extra["lib"] = lib
 
 allprojects {
-    group = "com.template"
+    group = "tech.xilai"
     version = "1.0.0"
 }
 

@@ -8,7 +8,7 @@ tasks.getByName<Jar>("jar") {
 }
 
 springBoot {
-    mainClassName = "com.xilai.WebBooter"
+    mainClassName = "tech.xilai.WebBooter"
 }
 
 // 依赖配置
