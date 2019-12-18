@@ -4,6 +4,7 @@ import io.nerv.server.undertow.GracefulShutdownUndertowWrapper;
 import io.nerv.web.sys.dict.cache.DictHelperProvider;
 import io.undertow.UndertowOptions;
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +23,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableCaching
 @EnableJpaAuditing
 @SpringBootApplication
+//TODO 需要修改如下两行
+@MapperScan("tech.xilai.web.**.mapper")
 @ComponentScan(basePackages = {"io.nerv.*","tech.xilai.*"})
 public class WebBooter implements CommandLineRunner {
 

@@ -24,6 +24,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔
+  //TODO 需要添加包扫描配置
   typeAliasesPackage: io.nerv.*.**.entity
   global-config:
 #      刷新mapper 调试神器

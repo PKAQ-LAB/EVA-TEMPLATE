@@ -27,6 +27,7 @@ import java.util.List;
 @EnableSwagger2
 @ConditionalOnProperty(prefix = "spring.profiles", name = "active", havingValue = "dev")
 public class SwaggerConfiguration {
+    //TODO 需要修改方法名以及内部的相关配置,一般为 "项目名API"
     @Bean
     public Docket veinApi() {
         Predicate<RequestHandler> vein = RequestHandlerSelectors.basePackage("com.template");
@@ -41,13 +42,13 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build();
     }
-
+    //TODO 需要修改配置
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("模板项目")
-                .description("http://pkaq.org")
-                .termsOfServiceUrl("http://pkaq.org/")
-                .contact(new Contact("W.F","http://pkaq.org","pkaq@msn.com"))
+                .description("http://xilai.tech")
+                .termsOfServiceUrl("http://xilai.tech/")
+                .contact(new Contact("W.F","http://xilai.tech","pkaq@msn.com"))
                 .version("1.0")
                 .build();
     }
