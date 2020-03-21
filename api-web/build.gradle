@@ -1,6 +1,6 @@
 plugins {
      id 'org.springframework.boot' version '2.2.5.RELEASE'
- }
+}
 apply plugin: 'io.spring.dependency-management'
 
 jar {
@@ -16,10 +16,7 @@ description = """web"""
 compileJava.dependsOn(processResources)
 
 dependencies {
-   implementation project(":eva-core"),
-				  project(":eva-auth"),
-                  project(":addon-weixin"),
-                  project(":addon-pay"),
-                  "${lib.bootAdmin}",
-		   		  "${lib.devTools}"
+   implementation   "${lib.core}",
+		   			"${lib.auth}",
+		   		  	"${lib.devTools}"
 }
