@@ -1,0 +1,25 @@
+plugins {
+     id 'org.springframework.boot' version '2.2.5.RELEASE'
+ }
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+	enabled = true
+}
+
+bootJar {
+	mainClassName = 'io.nerv.WebBooter'
+}
+
+description = """web"""
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+   implementation project(":eva-core"),
+				  project(":eva-auth"),
+                  project(":addon-weixin"),
+                  project(":addon-pay"),
+                  "${lib.bootAdmin}",
+		   		  "${lib.devTools}"
+}
