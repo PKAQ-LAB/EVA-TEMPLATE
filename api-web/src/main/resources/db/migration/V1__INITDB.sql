@@ -76,9 +76,8 @@ CREATE TABLE `sys_dict`  (
 -- ----------------------------
 INSERT INTO `sys_dict` VALUES ('1', 'biz', '业务代码', '0', '业务代码', '1899-12-31 08:00:00', '1899-12-31 08:00:00', NULL, '', '9999');
 INSERT INTO `sys_dict` VALUES ('1174974634025496578', 'data_permission', '数据权限', '1', '数据权限类型', '2019-09-20 17:12:37', '2019-09-20 19:41:56', NULL, NULL, '9999');
-INSERT INTO `sys_dict` VALUES ('1187716348942970881', 'purchasing_type', '采购类型', '1', NULL, '2019-10-25 21:03:39', '2019-10-25 21:17:06', '9199482d76b443ef9f13fefddcf0046c', '9199482d76b443ef9f13fefddcf0046c', '1');
-INSERT INTO `sys_dict` VALUES ('1187908136467095553', 'goods_type', '货品类型', '1', NULL, '2019-10-26 09:45:45', '2019-10-31 13:12:06', '9199482d76b443ef9f13fefddcf0046c', '9199482d76b443ef9f13fefddcf0046c', '1');
-INSERT INTO `sys_dict` VALUES ('3', 'sys', '系统代码', '0', 'fdvdfv', '1899-12-31 08:00:00', '1899-12-31 08:00:00', NULL, NULL, '9999');
+INSERT INTO `sys_dict` VALUES ('3', 'sys', '系统代码', '0', '系统代码', '1899-12-31 08:00:00', '1899-12-31 08:00:00', NULL, NULL, '9999');
+INSERT INTO sys_dict  ( id, code, name, parent_id, create_by, gmt_create, modify_by, gmt_modify )  VALUES  ( '1247704849712906241', 'dict_type', '所属分类', '0001', '9199482d76b443ef9f13fefddcf0046c', '2020-04-08T09:56:32.070004400', '9199482d76b443ef9f13fefddcf0046c', '2020-04-08T09:56:32.070004400' );
 
 -- ----------------------------
 -- Table structure for sys_dict_item
@@ -101,10 +100,8 @@ INSERT INTO `sys_dict_item` VALUES ('1174974634117771265', '1174974634025496578'
 INSERT INTO `sys_dict_item` VALUES ('1174974634142937089', '1174974634025496578', '0002', '本部门及下属部门', 2);
 INSERT INTO `sys_dict_item` VALUES ('1174974634159714305', '1174974634025496578', '0003', '指定部门', 3);
 INSERT INTO `sys_dict_item` VALUES ('1174974634176491521', '1174974634025496578', '0005', '仅本人创建', 5);
-INSERT INTO `sys_dict_item` VALUES ('1187717107797413889', '1187716348942970881', '0001', '网络采购', NULL);
-INSERT INTO `sys_dict_item` VALUES ('1187719735684030466', '1187716348942970881', '0002', '市场采购', NULL);
-INSERT INTO `sys_dict_item` VALUES ('1187908136500649986', '1187908136467095553', '0001', '玩具', NULL);
-INSERT INTO `sys_dict_item` VALUES ('1187908136525815809', '1187908136467095553', '0002', '饰品', NULL);
+INSERT INTO sys_dict_item  ( id, main_id, key_name, key_value )  VALUES  ( '5ee97d5c83464aeaa08dc441c396f62b', '1247704849712906241', '0001', '系统代码' );
+INSERT INTO sys_dict_item  ( id, main_id, key_name, key_value )  VALUES  ( 'f6fb18fd71c665baf57e680bc5a28fec', '1247704849712906241', '0002', '业务代码' );
 
 -- ----------------------------
 -- Table structure for sys_module
@@ -141,7 +138,6 @@ INSERT INTO `sys_module` VALUES ('1186192847761297410', '业务日志', 'file', 
 INSERT INTO `sys_module` VALUES ('1186192979059789826', '异常日志', 'file', NULL, NULL, '1186192719776305153', '1186192719776305153', '系统监控', '/monitor/log/error', '系统监控/异常日志', 1, 2, '9999', NULL, '2019-10-21 16:10:19', '2019-10-21 16:11:08', '9199482d76b443ef9f13fefddcf0046c', '9199482d76b443ef9f13fefddcf0046c');
 INSERT INTO `sys_module` VALUES ('1187588287316574209', '代码生成', 'rocket', NULL, NULL, NULL, NULL, NULL, '/dev/generator', NULL, 1, 6, '9999', NULL, '2019-10-25 12:34:47', '2019-10-25 12:34:47', '9199482d76b443ef9f13fefddcf0046c', '9199482d76b443ef9f13fefddcf0046c');
 INSERT INTO `sys_module` VALUES ('1187919802302926850', '进销存', 'home', NULL, NULL, NULL, NULL, NULL, '/pdos', NULL, 1, 7, '9999', NULL, '2019-10-26 10:32:06', '2019-10-26 10:32:06', '9199482d76b443ef9f13fefddcf0046c', '9199482d76b443ef9f13fefddcf0046c');
-INSERT INTO `sys_module` VALUES ('1187936839427391490', '采购管理', NULL, NULL, NULL, '1187919802302926850', '1187919802302926850', '进销存', '/pdos/purchasing', '进销存/采购管理', 1, 1, '9999', NULL, '2019-10-26 11:39:48', '2019-10-26 11:39:48', '9199482d76b443ef9f13fefddcf0046c', '9199482d76b443ef9f13fefddcf0046c');
 INSERT INTO `sys_module` VALUES ('5', '系统管理', 'setting', NULL, NULL, '5', NULL, '系统管理', '/sys', NULL, 0, 0, '9999', NULL, NULL, '2019-10-15 12:41:52', NULL, NULL);
 INSERT INTO `sys_module` VALUES ('6', '组织管理', 'flag', NULL, NULL, '5,5', '5', NULL, '/sys/organization', NULL, 1, 0, '9999', NULL, NULL, '2019-11-01 10:36:52', NULL, '9199482d76b443ef9f13fefddcf0046c');
 INSERT INTO `sys_module` VALUES ('7', '模块管理', 'bars', NULL, NULL, '5,5', '5', NULL, '/sys/module', NULL, 1, 3, '9999', NULL, NULL, '2019-11-01 10:36:56', NULL, '9199482d76b443ef9f13fefddcf0046c');
@@ -172,7 +168,7 @@ INSERT INTO `sys_module_resources` VALUES ('1186193072919924737', '1186192847761
 INSERT INTO `sys_module_resources` VALUES ('1187931885706899458', '1187931885673345025', '全部资源', '/**', '9999');
 INSERT INTO `sys_module_resources` VALUES ('1187931978862391298', '1187931978845614082', '全部资源', '/**', '9999');
 INSERT INTO `sys_module_resources` VALUES ('1187934072734441473', '1187934072596029442', '全部资源', '/**', '9999');
-INSERT INTO `sys_module_resources` VALUES ('1187936839473528833', '1187936839427391490', '全部资源', '/**', '9999');
+
 INSERT INTO `sys_module_resources` VALUES ('6', '6', '全部资源', '/**', '');
 INSERT INTO `sys_module_resources` VALUES ('7', '7', '全部资源', '**', '');
 INSERT INTO `sys_module_resources` VALUES ('8', '8', '全部资源', '**', '');
@@ -289,7 +285,7 @@ INSERT INTO `sys_role_module` VALUES ('1187937381704761346', '1', '1187919802302
 INSERT INTO `sys_role_module` VALUES ('1187937381721538562', '1', '1186192847761297410', '1186193072919924737');
 INSERT INTO `sys_role_module` VALUES ('1187937381738315777', '1', '10', '10');
 INSERT INTO `sys_role_module` VALUES ('1187937381750898690', '1', '5', NULL);
-INSERT INTO `sys_role_module` VALUES ('1187937381771870210', '1', '1187936839427391490', '1187936839473528833');
+
 INSERT INTO `sys_role_module` VALUES ('1191921989085532161', '1191916813788344321', '1186192979059789826', '1186193037775851522');
 INSERT INTO `sys_role_module` VALUES ('1191921989106503681', '1191916813788344321', '6', '6');
 INSERT INTO `sys_role_module` VALUES ('1191921989114892289', '1191916813788344321', '7', '7');

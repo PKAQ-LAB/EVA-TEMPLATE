@@ -1,6 +1,7 @@
 package io.nerv.config;
 
 import cn.hutool.core.collection.CollUtil;
+import io.nerv.core.docs.SwaggerHelper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -47,6 +48,7 @@ public class SwaggerConfiguration {
         pars.add(version.build());
 
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("默认分组")
                 .globalOperationParameters(pars)
                 .securitySchemes(CollUtil.toList(
                         new ApiKey("Authorization", "Authorization", "header")))
