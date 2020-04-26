@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    eva = "2.3.2"
+    eva = "2.5.2"
     lombok = "1.18.12"
     springBootVersion = '2.2.6.RELEASE'
     securityTest = "5.3.1.RELEASE"
