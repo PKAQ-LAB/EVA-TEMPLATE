@@ -2,7 +2,6 @@ package io.nerv;
 
 import io.nerv.core.license.LicenseVerify;
 import io.nerv.properties.EvaConfig;
-import io.nerv.server.undertow.GracefulShutdownUndertowWrapper;
 import io.nerv.web.sys.dict.cache.DictCacheHelper;
 import io.undertow.UndertowOptions;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +14,6 @@ import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFa
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * 启动类
@@ -23,7 +21,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  */
 @Slf4j
 @EnableCaching
-@EnableJpaAuditing
 @SpringBootApplication
 @ComponentScan(basePackages = {"io.nerv.*"})
 public class WebBooter implements CommandLineRunner {
@@ -36,9 +33,6 @@ public class WebBooter implements CommandLineRunner {
 
     @Autowired
     private DictCacheHelper dictCacheHelper;
-
-    @Autowired(required = false)
-    private GracefulShutdownUndertowWrapper gracefulShutdownUndertowWrapper;
 
     @Override
     public void run(String... args) {
@@ -60,17 +54,5 @@ public class WebBooter implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(WebBooter.class, args);
-    }
-
-    /**
-     * 用于接受 shutdown 事件
-     */
-    @Bean
-    @ConditionalOnProperty(prefix = "spring.profiles", name = "active", havingValue = "prod")
-    public UndertowServletWebServerFactory servletWebServerFactory() {
-        UndertowServletWebServerFactory factory = new UndertowServletWebServerFactory();
-        factory.addDeploymentInfoCustomizers(deploymentInfo -> deploymentInfo.addOuterHandlerChainWrapper(gracefulShutdownUndertowWrapper));
-        factory.addBuilderCustomizers(builder -> builder.setServerOption(UndertowOptions.ENABLE_STATISTICS, true));
-        return factory;
     }
 }

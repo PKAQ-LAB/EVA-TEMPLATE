@@ -1,16 +1,12 @@
 import org.apache.tools.ant.filters.ReplaceTokens
-
-plugins {
-     id 'org.springframework.boot' version '2.2.6.RELEASE'
- }
-apply plugin: 'io.spring.dependency-management'
+apply plugin: "org.springframework.boot"
 
 jar {
 	enabled = true
 }
 
 bootJar {
-	mainClassName = 'io.nerv.WebBooter'
+	mainClass = 'io.nerv.WebBooter'
 }
 
 description = """web"""
@@ -27,7 +23,8 @@ processResources {
 }
 
 dependencies {
-   implementation   "${lib.core}",
-		   			"${lib.auth}",
+   implementation	"${lib.eva_license}",
+   					"${lib.eva_sys}",
+					"${lib.eva_auth}",
 		   		  	"${lib.devTools}"
 }
