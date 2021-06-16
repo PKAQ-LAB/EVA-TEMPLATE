@@ -3,16 +3,12 @@ package io.nerv;
 import io.nerv.core.license.LicenseVerify;
 import io.nerv.properties.EvaConfig;
 import io.nerv.web.sys.dict.cache.DictCacheHelper;
-import io.undertow.UndertowOptions;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 /**

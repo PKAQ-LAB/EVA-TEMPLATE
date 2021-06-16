@@ -50,8 +50,11 @@ subprojects {
 
      repositories {
          mavenLocal()
-         jcenter()
          mavenCentral()
+         maven {
+             allowInsecureProtocol = true
+             url"http://xilai.my.to:10081/artifactory/pub"
+         }
          maven { url"https://maven.aliyun.com/repository/central" }
          maven { url"https://maven.aliyun.com/repository/jcenter" }
          maven { url"https://mirrors.huaweicloud.com" }
