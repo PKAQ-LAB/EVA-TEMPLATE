@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/java/jre:11u2-zulu-alpine
+FROM mcr.microsoft.com/java/jre:11-zulu-alpine
 MAINTAINER W.F # pkaq@msn.com
 VOLUME /tmp
 COPY *.jar /opt/app.jar
