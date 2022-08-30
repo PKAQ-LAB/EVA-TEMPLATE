@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+import org.apache.tools.ant.filters.ReplaceTokens
+apply plugin: "org.springframework.boot"
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    mainClass = 'io.nerv.WebBooter'
+}
+
+project.description = """web"""
+
+compileJava.dependsOn(processResources)
+
+processResources {
+    println "==> Load configuration for $profile"
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    from(sourceSets.main.resources.srcDirs) {
+        filter(ReplaceTokens, tokens: [profile: profile])
+    }
+}
+
+dependencies {
+    implementation  "${lib.core_web}",
+					"${lib.web_sys}",
+                    "${lib.knife4j_ui}",
+                    "${lib.mysql}"
+}

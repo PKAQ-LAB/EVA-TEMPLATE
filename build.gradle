@@ -1,34 +1,27 @@
 plugins {
-    id "name.remal.check-dependency-updates" version "${cdu_ver}"
     id "io.spring.dependency-management" version "${spring_dep}"
     id 'org.springframework.boot' version "${spring_boot_ver}"
 }
 
 ext {
-    lib = ["eva_core" : "io.nerv:eva-web-base:${eva}",
-           "eva_sys" : "io.nerv:eva-web-sys:${eva}",
-           "eva_auth" : "io.nerv:eva-web-auth:${eva}",
-           "eva_license" : "io.nerv:eva-core-license:${eva}",
-           "knife4j_ui" : "com.github.xiaoymin:knife4j-spring-boot-starter:${knife4j}",
-           "boot" : "org.springframework.boot:spring-boot-dependencies:${spring_boot_ver}",
+    lib = ["core_web" : "org.pkaq:eva-core-web:${eva}",
+           "web_sys" : "org.pkaq:eva-web-sys:${eva}",
+           "web_auth" : "org.pkaq:eva-web-auth:${eva}",
+           "mysql" : "mysql:mysql-connector-java:${mysql}",
            "lombok" : "org.projectlombok:lombok:${lombok}",
-           "test" : "org.springframework.boot:spring-boot-starter-test",
-           "securityTest" : "org.springframework.security:spring-security-test:${securityTest}",
-           "bootAdmin" : "de.codecentric:spring-boot-admin-starter-client:${boot_admin}",
-           "devTools" : "org.springframework.boot:spring-boot-devtools"
+           "knife4j_ui" : "com.github.xiaoymin:knife4j-springdoc-ui:${knife4j}",
+           "boot" : "org.springframework.boot:spring-boot-dependencies:${spring_boot_ver}"
     ]
 }
 
 allprojects {
-    apply plugin: "name.remal.check-dependency-updates"
-    group = "tech.xilai"
+    group = "org.pkaq"
     version = "1.0.0"
 }
 
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'io.spring.dependency-management'
-
 
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -51,10 +44,6 @@ subprojects {
      repositories {
          mavenLocal()
          mavenCentral()
-         maven {
-             allowInsecureProtocol = true
-             url"http://xilai.my.to:10081/artifactory/pub"
-         }
          maven { url"https://maven.aliyun.com/repository/central" }
          maven { url"https://maven.aliyun.com/repository/jcenter" }
          maven { url"https://mirrors.huaweicloud.com" }
@@ -65,14 +54,8 @@ subprojects {
     }
 
     dependencies {
-        implementation  "${lib.eva_core}",
-                        "${lib.knife4j_ui}"
-
-        implementation "${lib.lombok}"
+        implementation      "${lib.lombok}"
         annotationProcessor "${lib.lombok}"
-
-        testImplementation "${lib.test}",
-                            "${lib.securityTest}"
      }
 }
 
