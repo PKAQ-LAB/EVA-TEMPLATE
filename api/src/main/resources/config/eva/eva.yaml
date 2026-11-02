@@ -1,0 +1,90 @@
+# EVA 业务配置由 Spring ConfigData 加载，但与 Spring 基础设施配置分文件维护。
+eva:
+  mode: ${EVA_MODE:standalone}
+  client-info:
+    # 仅这些代理来源可以提供 X-Forwarded-For / X-Real-IP；默认不信任任何来源
+    trusted-proxies: []
+    # 在线会话最后活动时间最多每分钟写入一次 Redis
+    activity-update-interval-seconds: 60
+  cloud:
+    # 是否仅允许经过网关转发的请求访问服务，默认关闭
+    enable: false
+    request-header: x-request
+    request-value: eva-gateway-request
+  i18n: true
+  norepeat-check: false
+  norepeat-ttl: 1s
+  cookie:
+    max-age: 2592000
+    secure: false
+    same-site: Lax
+  jwt:
+    persistence: true
+    header: Authorization
+    token-head: Bearer
+    sign: PKAQ
+    # 非生产环境使用明确的开发密钥；生产配置必须通过环境变量覆盖且不得提供默认值
+    secret: ${EVA_JWT_SECRET:template-api-development-only-key-change-before-production}
+    ttl: 2592000000
+    alpha-ttl: 1800000
+    bravo-ttl: 2592000000
+    threshold: 300000
+  auth:
+    # 安全能力总开关；关闭后仅显式 anonymous 路径公开，其余请求拒绝
+    authentication:
+      enabled: true
+    # 仅 standalone 且 JWT 认证启用时可开放，不创建部门、岗位或角色。
+    registration:
+      enabled: ${EVA_AUTH_REGISTRATION_ENABLED:false}
+    webstatic:
+    anonymous: /auth/login,/auth/logout,/auth/getAlpha,/wx/**,/doc/**,/actuator/**,/swagger-resources/**,/v3/api-docs/swagger-config
+    permit: /auth/**,/notices,/wx/**,/doc/**,/actuator/**,/license/**
+    jwt:
+      enabled: true
+    open-api:
+      enabled: true
+      paths: /apr/**
+  resource-permission:
+    # 可独立关闭接口资源权限；不会关闭登录认证与 Token 撤销校验
+    enable: true
+    strict: false
+  tenant:
+    # false: 单 schema standalone；true + mode=schema: core + tenant schema 双层模式
+    enable: ${EVA_TENANT_ENABLE:false}
+    mode: ${EVA_TENANT_MODE:standalone}
+    core-schema: ${EVA_CORE_SCHEMA:eva_core}
+    standalone-schema: ${EVA_STANDALONE_SCHEMA:eva}
+    prefix: tenant_
+  data-permission:
+    # 可独立启用数据权限；当前数据范围来源仍为角色配置，与接口权限开关无关
+    enable: true
+    exclude-tables: sys_module_resources,sys_role_user
+  cache:
+    config:
+      - name: uploadfiles
+        ttl: 1d
+      - name: dictdata
+        ttl: 0s
+  bizlog:
+    enabled: true
+    archive:
+      enabled: true
+      # 热数据保留月数，超过该期限后迁移到归档表
+      after-months: 6
+      batch-size: 1000
+      max-batches: 100
+      cron: "0 20 2 * * *"
+      zone: Asia/Shanghai
+  license:
+    enable: false
+    alias: publiccert
+    keystore-pwd: ${EVA_LICENSE_KEYSTORE_PASSWORD:}
+    path: /license/publicCerts.store
+    license: /license/license.lic
+    subject: eva
+
+  upload:
+    type: ng
+    temp-path: ${EVA_UPLOAD_TEMP_PATH:./data/upload/temp}
+    storage-path: ${EVA_UPLOAD_STORAGE_PATH:./data/upload/storage}
+    allow-suffix-name: jpg,png,jpeg,pdf

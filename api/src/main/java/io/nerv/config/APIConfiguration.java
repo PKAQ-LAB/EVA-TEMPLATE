@@ -2,8 +2,8 @@ package io.nerv.config;
 
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.PathItem;
-import org.springdoc.core.GroupedOpenApi;
-import org.springdoc.core.customizers.OpenApiCustomiser;
+import org.springdoc.core.models.GroupedOpenApi;
+import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -16,10 +16,10 @@ import java.util.List;
  * @Profile()
  */
 @Configuration
-@Profile({"!prod"})
+@Profile("dev")
 public class APIConfiguration {
     @Bean
-    public OpenApiCustomiser openApiCustomiser(){
+    public OpenApiCustomizer openApiCustomiser(){
         var pi = new PathItem();
         pi.description("用户登录")
                 .summary("概括")

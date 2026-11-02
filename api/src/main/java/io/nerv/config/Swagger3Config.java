@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
                  description = "springdoc-openAPI 接口说明文档",
                  contact = @Contact(name = "PKAQ")
          ),
-         security = @SecurityRequirement(name = "JWT"),
+         security = @SecurityRequirement(name = "Authorization"),
          externalDocs = @ExternalDocumentation(description = "参考文档",
                  url = "https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations"
          )

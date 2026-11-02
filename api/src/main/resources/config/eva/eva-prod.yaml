@@ -1,0 +1,5 @@
+eva:
+  jwt:
+    secret: ${EVA_JWT_SECRET}
+  cookie:
+    secure: true

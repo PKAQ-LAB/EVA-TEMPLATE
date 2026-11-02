@@ -1,0 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+eva:
+  jwt:
+    secret: ${EVA_JWT_SECRET:template-api-development-only-key-change-before-production}
