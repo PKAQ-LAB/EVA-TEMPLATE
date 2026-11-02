@@ -1,6 +1,6 @@
-FROM mcr.microsoft.com/java/jre:17-zulu-alpine
+FROM eclipse-temurin:25-jre-noble
 MAINTAINER W.F # pkaq@msn.com
 VOLUME /tmp
 COPY *.jar /opt/app.jar
-EXPOSE 9009
+EXPOSE 9016
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/app.jar"]
