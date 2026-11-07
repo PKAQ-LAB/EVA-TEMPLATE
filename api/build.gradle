@@ -1,25 +1,28 @@
-apply plugin: 'org.springframework.boot'
+plugins {
+    alias(libs.plugins.spring.boot)
+}
 
 bootJar { mainClass = 'io.nerv.WebBooter' }
 jar { enabled = false }
-description = 'EVA 1.1.2 应用启动模板'
+
+description = 'EVA 应用启动模板'
 
 // PostgreSQL 宿主不加载 EVA 通用依赖中的 MySQL Flyway 适配器。
 configurations.configureEach {
-    exclude group: 'org.flywaydb', module: 'flyway-mysql'
+    exclude group: libs.flyway.mysql.get().module.group, module: libs.flyway.mysql.get().module.name
 }
 
 dependencies {
-    implementation "org.pkaq:eva-core-common:${eva}",
-                   "org.pkaq:eva-core-data-mybatis:${eva}",
-                   "org.pkaq:eva-web-core:${eva}",
-                   "org.pkaq:eva-web-auth:${eva}",
-                   "org.pkaq:eva-web-sys-service:${eva}",
-                   'org.springframework.boot:spring-boot-starter-web',
-                   'org.springframework.boot:spring-boot-starter-actuator',
-                   "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}",
-                   "org.flywaydb:flyway-database-postgresql:${flyway}"
-    runtimeOnly 'org.postgresql:postgresql'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation libs.eva.common,
+                   libs.eva.mybatis,
+                   libs.eva.web.core,
+                   libs.eva.auth,
+                   libs.eva.system,
+                   libs.spring.web,
+                   libs.spring.actuator,
+                   libs.springdoc,
+                   libs.flyway.postgresql
+    runtimeOnly libs.postgresql
+    testImplementation libs.spring.test
+    testRuntimeOnly libs.junit.launcher
 }

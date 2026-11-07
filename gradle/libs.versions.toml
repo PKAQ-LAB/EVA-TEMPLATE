@@ -1,0 +1,26 @@
+[versions]
+eva = "1.1.3"
+spring-dependency-management = "1.1.7"
+spring-boot = "4.1.2"
+springdoc = "3.2.0"
+flyway = "13.12.1"
+
+[libraries]
+eva-common = { module = "org.pkaq:eva-core-common", version.ref = "eva" }
+eva-mybatis = { module = "org.pkaq:eva-core-data-mybatis", version.ref = "eva" }
+eva-web-core = { module = "org.pkaq:eva-web-core", version.ref = "eva" }
+eva-auth = { module = "org.pkaq:eva-web-auth", version.ref = "eva" }
+eva-system = { module = "org.pkaq:eva-web-sys-service", version.ref = "eva" }
+spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+springdoc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+flyway-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
+flyway-mysql = { module = "org.flywaydb:flyway-mysql", version.ref = "flyway" }
+postgresql = { module = "org.postgresql:postgresql" }
+junit-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+
+[plugins]
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }

@@ -1,6 +1,6 @@
 # Template-API
 
-基于 Nexus 正式版 EVA `1.1.2` 的应用启动模板，保留应用包名 `io.nerv`。
+基于 Nexus 正式版 EVA `1.1.3` 的应用启动模板，保留应用包名 `io.nerv`。
 
 ## 基线
 
