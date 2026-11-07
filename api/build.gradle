@@ -13,12 +13,8 @@ configurations.configureEach {
 }
 
 dependencies {
-    implementation libs.eva.common,
-                   libs.eva.mybatis,
-                   libs.eva.web.core,
-                   libs.eva.auth,
+    implementation libs.eva.auth,
                    libs.eva.system,
-                   libs.spring.web,
                    libs.spring.actuator,
                    libs.springdoc,
                    libs.flyway.postgresql
