@@ -1,4 +1,4 @@
-FROM eclipse-temurin:25-jre-noble
+FROM eclipse-temurin:25-jre-alpine
 MAINTAINER W.F # pkaq@msn.com
 VOLUME /tmp
 COPY *.jar /opt/app.jar
