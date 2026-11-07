@@ -43,3 +43,7 @@ java -jar api/build/libs/api-1.0.0.jar
 ## 验证边界
 
 `EvaConfigurationTest` 使用发布的真实EVA配置绑定器与Spring ConfigData验证开发／生产／schema覆盖和生产密钥校验，不启动应用Web服务，不连接数据库或Redis。编译、打包与配置测试不能替代真实环境登录、CRUD和权限联调；运行联调需另行提供目标环境配置。
+
+## 开发规则
+
+业务开发前阅读 [后端开发顶层规则](docs/DEVELOPMENT_RULES.md)，规则入口见 [AGENTS.md](AGENTS.md)。复制本模板时一并保留这两个文件。
